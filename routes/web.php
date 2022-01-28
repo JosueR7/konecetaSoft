@@ -17,11 +17,12 @@ use App\Http\Controllers\VentaController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [ProductsController::class, 'index']);
 
 Route::resource('/products', ProductsController::class);
 
-Route::get('/venta', 'VentaController@create')->name('venta.create');
+Route::get('/venta', [VentaController::class, 'create'])->name('venta');
+Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
 
 Auth::routes();
 

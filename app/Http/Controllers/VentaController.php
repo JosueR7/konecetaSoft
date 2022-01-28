@@ -24,7 +24,7 @@ class VentaController extends Controller
      */
     public function create()
     {
-        //
+        return view('venta');
     }
 
     /**
@@ -35,7 +35,9 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $venta = Venta::create($request->all());
+
+        return back()->with('status', 'Venta Registrada con exito');
     }
 
     /**

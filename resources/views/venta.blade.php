@@ -9,14 +9,14 @@
 
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post">
+                        <form action="{{ route('venta.store') }}" method="post">
                             <div class="form-group">
-                                <label for="idProducto">Producto</label>
-                                <input id="idProducto" class="form-control" type="number" name="producto_id">
+                                <label for="idProducto">Id del Producto</label>
+                                <input id="idProducto" class="form-control" type="number" name="product_id">
                             </div>
                             <div class="form-group">
-                                <label for="cantidad">Cantidad</label>
-                                <input id="cantidad" class="form-control" type="number" name="cantidad">
+                                <label for="cantidad">Cantidad Vendida</label>
+                                <input id="cantidad" class="form-control" type="number" name="stock_vendido">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
