@@ -14,7 +14,12 @@ class ProductsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $faker->product,
+            'referencia' => $faker->sentence,
+            'precio' ,
+            'peso',
+            'categoria',
+            'stock'
         ];
     }
 }
