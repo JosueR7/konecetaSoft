@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
+use App\Models\Products;
+
 class VentaController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        return redirect()->action('${App\Http\Controllers\VentaController@create}');
     }
 
     /**
@@ -35,9 +37,27 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        $venta = Venta::create($request->all());
 
-        return back()->with('status', 'Venta Registrada con exito');
+        $product = Products::find($request->product_id);
+
+        if($product == null) {
+            return back()->with('status', 'Producto no existe');
+        }elseif ($product->stock > 0) {
+            $venta = Venta::create($request->all());
+            $product->stock = $product->stock - $venta->stock_vendido;
+            if ($product->stock < 0) {
+                return back()->with('status', 'Venta No se puede Registrar, Producto con cantidades insuficientes');
+            }else {
+                $product->update($request->all());
+            }
+            
+
+            return back()->with('status', 'Venta Registrada con exito');
+        }else {
+            return back()->with('status', 'Producto sin Stock');
+        }
+
+        
     }
 
     /**

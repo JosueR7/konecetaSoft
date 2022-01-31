@@ -21,7 +21,7 @@ Route::get('/', [ProductsController::class, 'index']);
 
 Route::resource('/products', ProductsController::class);
 
-Route::get('/venta', [VentaController::class, 'create'])->name('venta');
+Route::get('/venta/create', [VentaController::class, 'create'])->name('venta');
 Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
 
 Auth::routes();
