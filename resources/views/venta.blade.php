@@ -15,9 +15,17 @@
                     <div class="card-body">
                         <form action="{{ route('venta.store') }}" method="post">
                             @csrf
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="idProducto">Id del Producto</label>
                                 <input id="idProducto" class="form-control" type="number" name="product_id">
+                            </div> --}}
+                            <div class="form-group">
+                              <label for="product_id">Producto</label>
+                              <select class="form-control" name="product_id" id="product_id">
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endforeach
+                              </select>
                             </div>
                             <div class="form-group">
                                 <label for="cantidad">Cantidad Vendida</label>

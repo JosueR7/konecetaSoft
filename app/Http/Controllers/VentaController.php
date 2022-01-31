@@ -26,7 +26,8 @@ class VentaController extends Controller
      */
     public function create()
     {
-        return view('venta');
+        $products = Products::all();
+        return view('venta', compact('products'));
     }
 
     /**
